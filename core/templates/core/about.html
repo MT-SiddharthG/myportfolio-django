@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section id="about" class="section">
+  <div class="container">
+    <h2>{{ about.heading }}</h2>
+    <p>{{ about.body }}</p>
+
+    {% if about.cv %}
+      <a href="{{ about.cv.url }}" download class="btn btn-primary">Download CV</a>
+    {% endif %}
+
+    <div class="stats mt-4 row">
+      {% for stat in stats %}
+        <div class="col-md-4">
+          <div class="card text-center">
+            <h3>{{ stat.large_text }}</h3>
+            <p>{{ stat.small_text }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="skills mt-5">
+      <h3>Skills</h3>
+      <ul class="list-inline">
+        {% for skill in skills %}
+          <li class="list-inline-item badge badge-info p-2 m-1">
+            {{ skill.name }} - {{ skill.get_level_display }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+{% endblock %}

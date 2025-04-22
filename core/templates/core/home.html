@@ -1,0 +1,30 @@
+{% extends "core/base.html" %}
+{% block title %}Home | My Portfolio{% endblock %}
+
+{% block content %}
+  <section id="home" class="section active">
+    <div class="header-content">
+      <div class="left-header">
+        <div class="h-shape"></div>
+        <div class="image">
+          <img src="{{ hero.profile_image.url }}" alt="Hero image">
+        </div>
+      </div>
+      <div class="right-header">
+        <h1 class="name">
+          {{ hero.title }} <br/>
+          <span>{{ hero.subtitle }}</span>
+        </h1>
+        <p>{{ hero.intro }}</p>
+        {% if hero.cv %}
+          <div class="btn-container">
+            <a href="{{ hero.cv.url }}" class="main-btn" download>
+              <span class="btn-text">Download CV</span>
+              <span class="btn-icon"><i class="fas fa-download"></i></span>
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endblock %}
