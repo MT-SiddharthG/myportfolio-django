@@ -1,0 +1,12 @@
+{% extends "core/base.html" %}
+{% block title %}Work Experience{% endblock %}
+{% block content %}
+  <section id="experience" class="section">
+    <h2>Work Experience</h2>
+    {% for job in jobs %}
+      <!-- e.g. job.company, job.role, job.dates… -->
+    {% empty %}
+      <p>No work experience added.</p>
+    {% endfor %}
+  </section>
+{% endblock %}

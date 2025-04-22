@@ -1,0 +1,12 @@
+{% extends "core/base.html" %}
+{% block title %}Projects{% endblock %}
+{% block content %}
+  <section id="projects" class="section">
+    <h2>Projects</h2>
+    {% for project in projects %}
+      <!-- render each project… -->
+    {% empty %}
+      <p>No projects yet.</p>
+    {% endfor %}
+  </section>
+{% endblock %}

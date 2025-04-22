@@ -2,7 +2,7 @@
 {% block title %}Home | My Portfolio{% endblock %}
 
 {% block content %}
-  <section id="home" class="section active">
+  <section id="home" class="section sect1 header active">
     <div class="header-content">
       <div class="left-header">
         <div class="h-shape"></div>
@@ -12,8 +12,9 @@
       </div>
       <div class="right-header">
         <h1 class="name">
-          {{ hero.title }} <br/>
-          <span>{{ hero.subtitle }}</span>
+          Hi, I am <span>{{ hero.title }}</span>.
+          <br>
+          {{ hero.subtitle }}
         </h1>
         <p>{{ hero.intro }}</p>
         {% if hero.cv %}

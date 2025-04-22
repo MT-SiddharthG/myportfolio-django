@@ -1,0 +1,35 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Django specific
+*.log
+*.sqlite3
+db.sqlite3
+*.bak
+*.swp
+
+# Virtual environment
+venv/
+env/
+.env/
+
+# IDE/editor directories
+.vscode/
+.idea/
+.project
+.settings/
+tox/
+
+# Build directories
+*.egg-info/
+dist/
+build/
+
+# Static files
+/static/
+
+# Media files
+/media/
