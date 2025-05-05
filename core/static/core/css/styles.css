@@ -6,8 +6,23 @@
   }
   
   /*--------------------
-  
+  Properties
   --------------------*/
+  @property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+
+  /*--------------------
+  Animations
+  --------------------*/
+  @keyframes spin {
+    from { --angle: 0deg; }
+    to   { --angle: 360deg; }
+  }
+
   /*--------------------
   Variables
   --------------------*/
@@ -228,29 +243,30 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 2rem;
   }
-  .about-container .right-about .about-item {
+  .about-container .right-about .abt-item-card {
+    
     border: 1px solid var(--color-grey-5);
     border-radius: 5px;
     transition: var(--transition);
     box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.1);
   }
-  .about-container .right-about .about-item:hover {
+  .about-container .right-about .abt-item-card:hover {
     cursor: default;
     transform: translateY(-5px);
     border: 1px solid var(--color-secondary-hue);
     box-shadow: 1px 2px 15px var(--color-secondary-hue);
   }
-  .about-container .right-about .about-item .abt-item-text {
+  .about-container .right-about .abt-item-card .abt-item-text {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
   }
-  .about-container .right-about .about-item .abt-item-text .large-text {
+  .about-container .right-about .abt-item-card .abt-item-text .large-text {
     font-size: 3rem;
     font-weight: 700;
     color: var(--color-secondary);
   }
-  .about-container .right-about .about-item .abt-item-text .small-text {
+  .about-container .right-about .abt-item-card .abt-item-text .small-text {
     padding-left: 3rem;
     position: relative;
     text-transform: uppercase;
@@ -258,7 +274,7 @@
     color: var(--color-grey-1);
     letter-spacing: 2px;
   }
-  .about-container .right-about .about-item .abt-item-text .small-text::before {
+  .about-container .right-about .abt-item-card .abt-item-text .small-text::before {
     content: "";
     position: absolute;
     left: 0;
@@ -280,7 +296,66 @@
     text-transform: uppercase;
   }
   
-  .about-stats {
+
+  /*--------------------
+ About: Skills List
+--------------------*/
+.about-skills {
+  padding: 3rem 0;
+}
+
+.about-skills .stat-title {
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  text-align: center;
+  padding: 3.5rem 0;
+}
+
+.skills-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 2rem;
+}
+
+.skill-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.75rem;
+  /* border-bottom: 1px solid var(--color-grey-5); */
+}
+
+.skill-item:last-child {
+  border-bottom: none;
+}
+
+.skill-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skill-info i {
+  font-size: 1.4rem;
+  color: var(--color-secondary);
+}
+
+.skill-name {
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.skill-level {
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--br-sm-2);
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+  /* .about-stats {
     padding-bottom: 4rem;
   }
   .about-stats .progress-bars {
@@ -332,7 +407,7 @@
     font-size: 1.4rem;
     text-align: center;
     padding: 3.5rem 0;
-  }
+  } */
   
   /*--------------------
   Reusable Components

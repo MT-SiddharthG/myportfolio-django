@@ -1,36 +1,59 @@
-{% extends 'core/base.html' %}
-
-{% block content %}
-<section id="about" class="section">
-  <div class="container">
-    <h2>{{ about.heading }}</h2>
-    <p>{{ about.body }}</p>
-
-    {% if about.cv %}
-      <a href="{{ about.cv.url }}" download class="btn btn-primary">Download CV</a>
-    {% endif %}
-
-    <div class="stats mt-4 row">
+{% extends 'core/base.html' %} {% block content %} {% block titletag %}About |
+My Portfolio{% endblock %}
+<section id="about" class="section sect2 about active">
+  <div class="main-title">
+    <h2>About <span>me</span><span class="bg-text">about me</span></h2>
+  </div>
+  <div class="about-container">
+    <div class="left-about">
+      <h4>{{ about.heading }}</h4>
+      <p>{{ about.body }}</p>
+      {% if about.cv %}
+      <div class="btn-container">
+        <a href="{{ about.cv.url }}" class="main-btn">
+          <span class="btn-text">Download CV</span>
+          <span class="btn-icon"><i class="fas fa-download"></i></span>
+        </a>
+      </div>
+      {% endif %}
+    </div>
+    <div class="right-about">
       {% for stat in stats %}
-        <div class="col-md-4">
-          <div class="card text-center">
-            <h3>{{ stat.large_text }}</h3>
-            <p>{{ stat.small_text }}</p>
-          </div>
+      <div class="abt-item-card">
+        <div class="abt-item-text">
+          <p class="large-text">{{ stat.large_text }}</p>
+          <p class="small-text">{{ stat.small_text }}</p>
         </div>
+      </div>
       {% endfor %}
     </div>
+  </div>
 
-    <div class="skills mt-5">
+    <!-- ABOUT SKILLS -->
+    <div class="about-skills">
+      <h4 class="stat-title">My Skills</h4>
+      <div class="skills-list">
+        {% for skill in skills %}
+        <div class="skill-item">
+          <div class="skill-info">
+            <i class="devicon-{{ skill.name|lower }}-plain colored"></i>
+            <span class="skill-name">{{ skill.name }}</span>
+          </div>
+          <div class="skill-level">{{ skill.get_level_display }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- <div class="skills mt-5">
       <h3>Skills</h3>
       <ul class="list-inline">
         {% for skill in skills %}
-          <li class="list-inline-item badge badge-info p-2 m-1">
-            {{ skill.name }} - {{ skill.get_level_display }}
-          </li>
+        <li class="list-inline-item badge badge-info p-2 m-1">
+          {{ skill.name }} - {{ skill.get_level_display }}
+        </li>
         {% endfor %}
       </ul>
-    </div>
-  </div>
+    </div> -->
 </section>
 {% endblock %}
