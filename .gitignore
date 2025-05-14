@@ -3,6 +3,8 @@
 *.pyo
 *.pyd
 __pycache__/
+core/__pycache__/
+myportfolio/__pycache__/
 
 # Django specific
 *.log
@@ -33,3 +35,6 @@ build/
 
 # Media files
 /media/
+core/__pycache__/admin.cpython-313.pyc
+core/__pycache__/models.cpython-313.pyc
+core/__pycache__/views.cpython-313.pyc

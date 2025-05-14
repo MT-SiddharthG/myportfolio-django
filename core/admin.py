@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import AboutInfo, Hero, StatItem, Skill
+from django.db import models
+from .models import AboutInfo, Hero, StatItem, Skill, WorkExperience
 
 @admin.register(Hero)
 class HeroAdmin(admin.ModelAdmin):
@@ -17,3 +18,17 @@ class StatItemAdmin(admin.ModelAdmin):
 class SkillAdmin(admin.ModelAdmin):
     list_display = ('name', 'get_level_display')
     list_filter = ('level',)
+
+
+@admin.register(WorkExperience)
+class WorkExperienceAdmin(admin.ModelAdmin):
+    list_display = ('title', 'organization', 'start', 'end', 'order')
+    list_editable = ('order',)
+    ordering = ('order',)
+    fields = (
+        'order', 'start', 'end', 'title', 'organization',
+        'description', 'projects', 'tech_stack'
+    )
+    formfield_overrides = {
+        models.TextField: {'widget': admin.widgets.AdminTextareaWidget(attrs={'rows':2, 'cols':40})},
+    }

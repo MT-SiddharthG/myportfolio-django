@@ -1,6 +1,6 @@
 
 from django.views.generic import TemplateView
-from .models import Hero, AboutInfo, Skill, StatItem
+from .models import Hero, AboutInfo, Skill, StatItem, WorkExperience
 
 class HomeView(TemplateView):
     template_name = 'core/home.html'
@@ -35,10 +35,10 @@ class ProjectsView(TemplateView):
 
 class ExperienceView(TemplateView):
     template_name = 'core/experience.html'
-    # def get_context_data(self, **ctx):
-    #     ctx = super().get_context_data(**ctx)
-    #     ctx['jobs'] = WorkExperience.objects.all()
-    #     return ctx
+    def get_context_data(self, **ctx):
+        ctx = super().get_context_data(**ctx)
+        ctx['jobs'] = WorkExperience.objects.all()
+        return ctx
 
 class ContactView(TemplateView):
     template_name = 'core/contact.html'

@@ -69,3 +69,35 @@ class Skill(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.get_level_display()})"
+
+
+class WorkExperience(models.Model):
+    """
+    Timeline entries for work experience only.
+    """
+    start = models.CharField("From", max_length=20, help_text="e.g. 2010")
+    end = models.CharField("To", max_length=20, help_text="e.g. present or 2013")
+    title = models.CharField("Role", max_length=200)
+    organization = models.CharField("Company", max_length=200)
+    description = models.TextField()
+    projects = models.TextField(
+        blank=True,
+        help_text="Comma-separated list of projects you worked on"
+    )
+    tech_stack = models.TextField(
+        blank=True,
+        help_text="Comma-separated list of technologies/tools used"
+    )
+    order = models.PositiveIntegerField(default=0, help_text="Lower numbers appear first")
+
+    class Meta:
+        ordering = ['order', '-start']
+
+    def project_list(self):
+        return [p.strip() for p in self.projects.split(',') if p.strip()]
+
+    def tech_list(self):
+        return [t.strip() for t in self.tech_stack.split(',') if t.strip()]
+
+    def __str__(self):
+        return f"{self.title} @ {self.organization}"

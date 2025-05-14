@@ -1,12 +1,37 @@
-{% extends "core/base.html" %}
-{% block title %}Work Experience{% endblock %}
+{% extends "core/base.html" %} 
+{% block title %}Work Experience{% endblock %} 
 {% block content %}
-  <section id="experience" class="section">
-    <h2>Work Experience</h2>
+<section id="experience" class="section sect4 active">
+  <div class="main-title">
+    <h2>My <span>Experience</span><span class="bg-text">timeline</span></h2>
+  </div>
+  <div class="timeline-container">
     {% for job in jobs %}
-      <!-- e.g. job.company, job.role, job.dates… -->
-    {% empty %}
-      <p>No work experience added.</p>
-    {% endfor %}
-  </section>
-{% endblock %}
+    <div class="timeline-item">
+      <div class="tl-icon"><i class="fas fa-briefcase"></i></div>
+      <p class="tl-duration">{{ job.start }} - {{ job.end }}</p>
+      <h5>{{ job.title }}<span> - {{ job.organization }}</span></h5>
+      <p>{{ job.description }}</p>
+
+      {% if job.project_list %}
+      <p><strong>Projects worked on:</strong></p>
+      <ul>
+        {% for proj in job.project_list %}
+        <li>{{ proj }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %} 
+      {% if job.tech_list %}
+      <p>
+        <strong>Tech:</strong>
+        {% for tech in job.tech_list %}
+        <span class="tech-badge">{{ tech }}</span>{% if not forloop.last %}, {% endif %} 
+        {% endfor %}
+      </p>
+      {% endif %}
+    </div>
+    {% endfor %} 
+    
+  </div>
+</section>
+{% endblock content %}
